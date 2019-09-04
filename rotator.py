@@ -22,7 +22,11 @@ def check(square):
             rotate_n = 2
         if item['top'] is 'd':
             rotate_n = 3
-        new_list.append(sqr_rotate(item, rotate_n))
+        if rotate_n != 0:    
+            new_list.append(sqr_rotate(item, rotate_n))
+        else:
+            new_list = square
+
     return new_list
     
 def sqr_rotate(dict1, n):
@@ -46,11 +50,11 @@ def sqr_rotate(dict1, n):
 
     AFTER ROTATION:
 
-            ---{dict1['top']}----
+            ---{new_dict_values[1]}----
             |      | 
-            {dict1['lft']}  1  {dict1['rht']} 
+            {new_dict_values[0]}  1  {new_dict_values[2]} 
             |      |
-            ---{dict1['btm']}---
+            ---{new_dict_values[3]}---
 
 
     """)
