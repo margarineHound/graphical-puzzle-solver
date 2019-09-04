@@ -24,10 +24,13 @@ def check(square):
             rotate_n = 2
         if item['top'] is 'd':
             rotate_n = 3
-        new_list.append(sqr_rotate(item, rotate_n))
+        if rotate_n != 0:    
+            new_list.append(sqr_rotate(item, rotate_n))
+        else:
+            new_list = square
     return new_list
 
-#TODO: Note that the "rotation" is not used in the printing. This needs to be fixed.
+#TODO: Note that the "rotation" is not .........pused in the printing. This needs to be fixed.
 # sqr_rotate performs n rotations on d (clockwise: top -> rht, rht -> btm, btm -> left, left -> top)
 def sqr_rotate(dct, n):
     print(f""" 
@@ -50,11 +53,11 @@ def sqr_rotate(dct, n):
 
     AFTER ROTATION:
 
-            ---{dct['top']}----
+            ---{res[1]}----
             |      | 
-            {dct['lft']}  1  {dct['rht']} 
+            {res[0]}  1  {res[2]} 
             |      |
-            ---{dct['btm']}---
+            ---{res[3]}---
 
 
     """)
