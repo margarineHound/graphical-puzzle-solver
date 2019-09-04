@@ -27,34 +27,35 @@ def check(square):
         new_list.append(sqr_rotate(item, rotate_n))
     return new_list
 
-# sqr_rotate performs n rotations on dict1 (clockwise: top -> rht, rht -> btm, btm -> left, left -> top)
-def sqr_rotate(dict1, n):
-    new_dict_values = deque(dict1.values())
+#TODO: Note that the "rotation" is not used in the printing. This needs to be fixed.
+# sqr_rotate performs n rotations on d (clockwise: top -> rht, rht -> btm, btm -> left, left -> top)
+def sqr_rotate(dct, n):
     print(f""" 
     ***********************************
     ***********************************
     BEFORE ROTATION:
 
-            ---{dict1['top']}----
+            ---{dct['top']}----
             |      | 
-            {dict1['lft']}  1  {dict1['rht']} 
+            {dct['lft']}  1  {dct['rht']} 
             |      |
-            ---{dict1['btm']}---
+            ---{dct['btm']}---
      ***********************************
      ***********************************       
     """)
-    new_dict_values.rotate(n)
+    res = deque(dct.values())
+    res.rotate(n) # inline rotation on new data structure
 
     print(f""" 
 
     AFTER ROTATION:
 
-            ---{dict1['top']}----
+            ---{dct['top']}----
             |      | 
-            {dict1['lft']}  1  {dict1['rht']} 
+            {dct['lft']}  1  {dct['rht']} 
             |      |
-            ---{dict1['btm']}---
+            ---{dct['btm']}---
 
 
     """)
-    return dict(zip(dict1.keys(), new_dict_values))
+    return dict(zip(dct.keys(), res))

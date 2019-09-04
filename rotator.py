@@ -1,8 +1,16 @@
 from square import *
+
 def main():
+    #TODO: This is hard to read. Create two classes. They will be such that they store properties for and have methods for:
+    # 1) a class related to a Puzzle (e.g., method: Validate, Print, prop: attempt_count, etc.);
+    # 2) a class related to a Tile/Square (e.g., method: Rotate, Print, prop: list(<top>,<right>,<bottom>,<left>))
+    #TODO: Use your (new) Tile class to create a list of 9 (new) Tile instances.
+    #TODO: Use your (new) Puzzle class to embed the list of 9 Tile instances into a (new) Puzzle instance.
     delt = [{'lft': 'a', 'top': 'b', 'rht': 'c', 'btm': 'd'}, {'lft': 'd', 'top': 'a', 'rht': 'c', 'btm': 'b'} ,{'lft': 'a', 'top': 'b', 'rht': 'c', 'btm': 'd'}, {'lft': 'b', 'top': 'c', 'rht': 'd', 'btm': 'a'} ,{'lft': 'c', 'top': 'd', 'rht': 'a', 'btm': 'b'}, {'lft': 'd', 'top': 'a', 'rht': 'b', 'btm': 'c'},{'lft': 'a', 'top': 'b', 'rht': 'c', 'btm': 'd'}, {'lft': 'b', 'top': 'c', 'rht': 'd', 'btm': 'a'},{'lft': 'c', 'top': 'd', 'rht': 'a', 'btm': 'b'} ] 
     verify(delt)
     rot = check(delt)
+    #TODO: Your print statements show attention to design (good job!). But, you use a very similar structure to print both the individual squares and puzzles.
+    #Allow for a header to be provided in the Print method for both the Puzzle and Tile classes which reduce the repetition of ***...***\n**   <TEXT> **\n***...***
     print(f"""    
 
     ***************************************************
@@ -24,4 +32,5 @@ def main():
     |--{rot[6]['btm']}------{rot[7]['btm']}--------{rot[8]['btm']}--|
 
     """)
+
 if __name__ == "__main__": main()
