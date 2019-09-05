@@ -1,19 +1,15 @@
 #!/usr/bin/env python3
 
 # Refer to https://www.python.org/dev/peps/pep-0008/#class-names
+#
 # Tile class defines a primitive of the Puzzle class. In the puzzle game, a tile is one of 9 objects that needs to be rotated and placed within a 3x3 grid when attempting to solve the puzzle.
 class Tile(object):
     """
-    Creates a tile, specifying the edges in the following order:
+    A Tile object embeds a list of edges in the following order:
     top -> right -> bottom -> left
     """
     def __init__(self, edges):
-        if isinstance(edges, list) and len(edges) == 4:
-            self._top = edges[0]
-            self._right = edges[1]
-            self._bottom = edges[2]
-            self._left = edges[3]
-            self._tile = [self._top, self._right, self._bottom, self._left]
+        self.edges = edges # self.edges[0] -> top, self.edges[1] -> right, etc.
 
     def rotate(self, n):
         """rotate the tile"""
