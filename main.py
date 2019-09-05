@@ -11,4 +11,8 @@ def main():
 
     check(effect)
 
+    ver = puzzle(effect)
+    print(ver.verify())
+    print(ver)
+
 if __name__ == "__main__": main()
