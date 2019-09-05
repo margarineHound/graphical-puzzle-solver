@@ -34,21 +34,19 @@ class tile(object):
 
     def get_bottom(self):
         """ returns the 3rd element in the object"""
-        return self._top
+        return self._bottom
 
     def get_left(self):
         """ returns the last element in the object"""
-        return self._top
+        return self._left
 
 
 
     def __str__(self):
         """ prints a visual representation of each edge for the tile"""
 
-        return f"""
-            ---{self._top}----
+        return f"""---{self._top}----
             |      |
             {self._left}  1  {self._right}
             |      |
-            ---{self._bottom}---
-        """
+            ---{self._bottom}---"""

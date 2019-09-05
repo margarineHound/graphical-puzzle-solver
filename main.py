@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import tile
-import puzzle
+from puzzle import puzzle
 from square import *
 def main():
 
