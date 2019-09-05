@@ -24,28 +24,9 @@ class Tile(object):
             last = self.edges.pop(-1)
             self.edges.insert(0,last)
 
-    def get_top(self):
-        """ returns the 1st element in the object"""
-        return self._top
-    def get_right(self):
-        """ returns the 2nd element in the object"""
-        return self._right
-
-    def get_bottom(self):
-        """ returns the 3rd element in the object"""
-        return self._bottom
-
-    def get_left(self):
-        """ returns the last element in the object"""
-        return self._left
-
-
-
     def __str__(self):
-        """ prints a visual representation of each edge for the tile"""
-
-        return f"""---{self._top}----
+        return f"""---{self.edges[0]}----
             |      |
-            {self._left}  1  {self._right}
+            {self.edges[3]}  1  {self.edges[1]}
             |      |
-            ---{self._bottom}---"""
+            ---{self.edges[2]}---"""
