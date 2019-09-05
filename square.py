@@ -3,8 +3,12 @@ from tile import tile
 
 # TODO: I'm not sure what this function does, actually. Document its behavior for me so I can determine what we should do with it.
 def check(square):
+    """checks if a tile is in the proper orientation.
+    If not, rotates the tile by determinig the # of rotations
+    and calling the rotate function from the tile class."""
+#
     rotate_n = 0
-    # new_list = []
+
     for item in square:
         top = item.get_top()
         if top is 'b':
