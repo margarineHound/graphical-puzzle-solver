@@ -6,21 +6,23 @@
 class Tile(object):
     """
     A Tile object embeds a list of edges in the following order:
-    top -> right -> bottom -> left
+    [0,1,2,3] => [top, right, bottom, left]
     """
     def __init__(self, edges):
         self.edges = edges # self.edges[0] -> top, self.edges[1] -> right, etc.
-
+    
+    """
+    rotate performs a virtual rotation on a Tile instance
+    top -> right, right -> bottom, bottom -> left, left -> top
+    """
+    # See https://repl.it/repls/LumberingColdLegacysystem
+    # I haven't tested this version which acts on the list property of the class
     def rotate(self, n):
-        """rotate the tile"""
-
-        for i in range(n):
-            self._tile.insert(0, self._tile.pop())
-
-            self._top = self._tile[0]
-            self._right = self._tile[1]
-            self._bottom = self._tile[2]
-            self._left = self._tile[3]
+        if n > 0:
+            if n > 1:
+                return self.rotate(n-1)
+            last = self.edges.pop(-1)
+            self.edges.insert(0,last)
 
     def get_top(self):
         """ returns the 1st element in the object"""
