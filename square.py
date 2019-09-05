@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 from tile import tile
 
-
-# check ensures sanity of square objects
+# TODO: I'm not sure what this function does, actually. Document its behavior for me so I can determine what we should do with it.
 def check(square):
     rotate_n = 0
     # new_list = []
