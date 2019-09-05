@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
-class puzzle(object):
+
+# Puzzle class defines the structure and behavior of a collection of Tile objects. The state of a Puzzle is not mutated directly. Rather, the state of the Tile objects attached to a Puzzle instance are each mutable, implicitly modifiying the state of the Puzzle object. Thus, all methods of the Puzzle class are read-only.
+class Puzzle(object):
     """
     verifies the overall picture
     """

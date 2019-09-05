@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-#tile.py
-class tile(object):
+# Refer to https://www.python.org/dev/peps/pep-0008/#class-names
+# Tile class defines a primitive of the Puzzle class. In the puzzle game, a tile is one of 9 objects that needs to be rotated and placed within a 3x3 grid when attempting to solve the puzzle.
+class Tile(object):
     """
     Creates a tile, specifying the edges in the following order:
     top -> right -> bottom -> left
