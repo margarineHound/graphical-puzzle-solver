@@ -1,64 +1,30 @@
-from collections import deque
+#!/usr/bin/env python3
+from tile import tile
 
-# verify ensures sanity of square objects
-def verify(square):
-    if isinstance(square, list):
-        print('you have input a list')
-    else:
-        print('Incorrect input format')
-        raise SystemExit
-    if len(square) == 9:
-        pass
-    else:
-        print("Incorrect input size")
-        raise SystemExit
-
-# check ensures sanity of square objects
+# TODO: I'm not sure what this function does, actually. Document its behavior for me so I can determine what we should do with it.
 def check(square):
+    """checks if a tile is in the proper orientation.
+    If not, rotates the tile by determinig the # of rotations
+    and calling the rotate function from the tile class."""
+#
     rotate_n = 0
-    new_list = []
+
     for item in square:
-        if item['top'] is 'b':
+        top = item.get_top()
+        if top is 'b':
             rotate_n = 1
-        if item['top'] is 'c':
+        elif top is 'c':
             rotate_n = 2
-        if item['top'] is 'd':
+        elif top is 'd':
             rotate_n = 3
-        if rotate_n != 0:    
-            new_list.append(sqr_rotate(item, rotate_n))
-        else:
-            new_list = square
-    return new_list
+        else: continue
 
-#TODO: Note that the "rotation" is not .........pused in the printing. This needs to be fixed.
-# sqr_rotate performs n rotations on d (clockwise: top -> rht, rht -> btm, btm -> left, left -> top)
-def sqr_rotate(dct, n):
-    print(f""" 
-    ***********************************
-    ***********************************
-    BEFORE ROTATION:
+        if rotate_n != 0:
+            item.rotate(rotate_n)
 
-            ---{dct['top']}----
-            |      | 
-            {dct['lft']}  1  {dct['rht']} 
-            |      |
-            ---{dct['btm']}---
-     ***********************************
-     ***********************************       
-    """)
-    res = deque(dct.values())
-    res.rotate(n) # inline rotation on new data structure
-
-    print(f""" 
-
-    AFTER ROTATION:
-
-            ---{res[1]}----
-            |      | 
-            {res[0]}  1  {res[2]} 
-            |      |
-            ---{res[3]}---
-
-
-    """)
-    return dict(zip(dct.keys(), res))
+def tile_const(square):
+    assert isinstance(square, list), "Not a list"
+    if len(square) != 9:
+        raise TypeError('tile_const() takes a list of exactly 9 elements')
+    tiles = [tile(item) for item in square]
+    return tiles
