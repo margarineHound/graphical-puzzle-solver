@@ -1,30 +1,98 @@
 #!/usr/bin/env python3
-from tile import tile
+from puzzle import Puzzle
+from tile import Tile
+import csv
 
-# TODO: I'm not sure what this function does, actually. Document its behavior for me so I can determine what we should do with it.
+def csvparser(cfile):
+    """takes a csv file, and returns a list of tiles"""
+
+    csvreader = csv.reader(cfile, delimiter = ',')
+    tile = []
+    count = 0
+    for row in csvreader:
+        if count == 0:
+            count += 1
+            continue
+        else:
+            tile.append(row[1:])
+    return tile
+
+
+def rotate_count(tile_obj, n):
+    for i in range(n):
+        tile_obj.rotate(n)
+
+
+def tile_const(grid):
+    assert isinstance(grid, list), "Not a list"
+    if len(grid) != 9:
+        raise TypeError('tile_const() takes a list of exactly 9 elements')
+    tiles = [Tile(item) for item in grid]
+    return tiles
+
+
 def check(square):
     """checks if a tile is in the proper orientation.
     If not, rotates the tile by determinig the # of rotations
     and calling the rotate function from the tile class."""
-#
-    rotate_n = 0
+    # assuming a 3x3 grid has 9 ordered elements,# i.e. it is outlined in the
+    # following manner:
+    #   -------
+    #   |A|B|C|
+    #   -------
+    #   |D|E|F|
+    #   -------
+    #   |G|H|I|
+    #   -------
+    # Therefore, we start by matching the center tile with its surrounding tiles
+    # and continue thence until all tiles are properly aligned with their surrounding
+    # tiles
 
-    for item in square:
-        top = item.get_top()
-        if top is 'b':
-            rotate_n = 1
-        elif top is 'c':
-            rotate_n = 2
-        elif top is 'd':
-            rotate_n = 3
-        else: continue
+    def centerCheck(tcenter, tdyn, epos1, epos2=None):
+        """checks the edges of the center tile, with those of its immediate
+        surrounding tiles """
+        if epos2 == None:
+            if epos1 == 0:
+                epos2 = 2
+            elif epos1 == 1:
+                epos2 = 3
+            elif epos1 == 2:
+                epos2 = 0
+            elif epos1 == 3:
+                epos2 = 1
+            else:
+                raise Exception('Something wrong')
+        else:
+            pass
 
-        if rotate_n != 0:
-            item.rotate(rotate_n)
+        while tcenter.edges[epos1] != tdyn.edges[epos2]:
+                tdyn.rotate(1)
 
-def tile_const(square):
-    assert isinstance(square, list), "Not a list"
-    if len(square) != 9:
-        raise TypeError('tile_const() takes a list of exactly 9 elements')
-    tiles = [tile(item) for item in square]
-    return tiles
+    def tileCheck(tstatic, tdyn, epos1, epos2):
+        """checks and aligns the matching edges of a given tiles, against
+        that of a neighboring tile, provided the overlapping edges are given"""
+
+        while tstatic.edges[epos1] != tdyn.edges[epos2]:
+                tdyn.rotate(1)
+
+    tA = square.tiles[0]
+    tB = square.tiles[1]
+    tC = square.tiles[2]
+    tD = square.tiles[3]
+    tcent = square.tiles[4]
+    tF = square.tiles[5]
+    tG = square.tiles[6]
+    tH = square.tiles[7]
+    tI = square.tiles[8]
+
+    #checks and aligns the center tile against its immediate surrounding edges
+    for i in range(len(tcent.edges)):
+        tiles = [tB, tD, tF, tH]
+        centerCheck(tcent, tiles[i], i)
+
+    #checks and aligns the remaining tiles, against tiles that have already been
+    #algined by the previous loop
+    tileCheck(tB, tA, 3, 1)
+    tileCheck(tB, tC, 1, 3)
+    tileCheck(tH, tG, 3, 1)
+    tileCheck(tH, tI, 1, 3)
