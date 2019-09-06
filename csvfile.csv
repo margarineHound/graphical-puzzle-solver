@@ -1,0 +1,10 @@
+tile, top, right, bottom, left
+0,a,b,c,d
+1,d,a,b,c
+2,c,d,a,b
+3,b,c,d,a
+4,a,b,c,d
+5,d,a,b,c
+6,c,d,a,b
+7,b,c,d,a
+8,a,b,c,d
