@@ -1,4 +1,3 @@
-@@ -0,0 +1,46 @@
 # square_rotator
 
 <img src="./puzzle.jpg" width="500"/>
