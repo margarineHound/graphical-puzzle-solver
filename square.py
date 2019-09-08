@@ -48,7 +48,7 @@ def check(square):
     # and continue thence until all tiles are properly aligned with their surrounding
     # tiles
 
-    # TODO: I have some qusetions - note that I think this is not what we should be doing. I think doing "dumb" rotations and then doing a puzzle verify is a good first start.
+    # TODO: I have some qusetions - note that I think this is not what we should be doing. I think doing "dumb" rotations and then doing a puzzle.verify() after every operation is a good first start.
     # 1.) Which tile is supposed to be in the center?
     # 2.) Does this change if the tile initially assigned to the center is not "supposed" to be there (there is no solution if that tile is kept in the center position)?
     # 3.) Note that if tcenter.edges[epos1] does not complete any demi-image on any of tdyn's edges that this while loop will never exit.
