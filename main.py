@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 from tile import Tile
 from puzzle import *
+#NOTE: It's typically not a good idea to do wildcard imports.
+#This way you know where you're pulling the function from,
+#and it reduces confusion for the interpreter
 from square import *
 import csv
 
