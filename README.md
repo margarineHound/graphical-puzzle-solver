@@ -1,4 +1,4 @@
-# square_rotator
+# graphical-puzzle-solver
 
 <img src="./puzzle.jpg" width="500"/>
 
