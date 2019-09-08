@@ -48,6 +48,10 @@ def check(square):
     # and continue thence until all tiles are properly aligned with their surrounding
     # tiles
 
+    # TODO: I have some qusetions - note that I think this is not what we should be doing. I think doing "dumb" rotations and then doing a puzzle verify is a good first start.
+    # 1.) Which tile is supposed to be in the center?
+    # 2.) Does this change if the tile initially assigned to the center is not "supposed" to be there (there is no solution if that tile is kept in the center position)?
+    # 3.) Note that if tcenter.edges[epos1] does not complete any demi-image on any of tdyn's edges that this while loop will never exit.
     def centerCheck(tcenter, tdyn, epos1, epos2=None):
         """checks the edges of the center tile, with those of its immediate
         surrounding tiles """
@@ -61,13 +65,14 @@ def check(square):
             elif epos1 == 3:
                 epos2 = 1
             else:
-                raise Exception('Something wrong')
+                raise Exception('Invalid value for epos1 passed to centerCheck: ', epos1)
         else:
             pass
 
         while tcenter.edges[epos1] != tdyn.edges[epos2]:
                 tdyn.rotate(1)
 
+    # TODO: Note that if tstatic.edges[epos1] does not complete any demi-image on any of tdyn's edges that this while loop will never exit.
     def tileCheck(tstatic, tdyn, epos1, epos2):
         """checks and aligns the matching edges of a given tiles, against
         that of a neighboring tile, provided the overlapping edges are given"""
