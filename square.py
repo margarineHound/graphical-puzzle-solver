@@ -52,7 +52,15 @@ def check(square):
     # 1.) Which tile is supposed to be in the center?
     # 2.) Does this change if the tile initially assigned to the center is not "supposed" to be there (there is no solution if that tile is kept in the center position)?
     # 3.) Note that if tcenter.edges[epos1] does not complete any demi-image on any of tdyn's edges that this while loop will never exit.
+
+    #TODO: UPDATE: In response to your questions, I have some questions of my own:
+    # 1.) How many unique solutions can a puzzle have? is there only one unique solution?
+    # 2.) Are we, at this stage, concerned with the level of efficiency with which the solution needs to be discovered?
+    # 3.) Do you have a recommended algorithm, and/or know of any algorithms that might deal with this? I suppose this deals directly with my first question, since if there true exists only one unique solution, then we might be dealing with as many as 9! permutations for just the tile placements, not accounting for tile rotations.
+    # 4.) Dealing with your last point is easy, obviously, though the path forward needs to be discussed before progressing any further, imo
+
     def centerCheck(tcenter, tdyn, epos1, epos2=None):
+        falseCenter = False
         """checks the edges of the center tile, with those of its immediate
         surrounding tiles """
         if epos2 == None:
@@ -76,9 +84,10 @@ def check(square):
     def tileCheck(tstatic, tdyn, epos1, epos2):
         """checks and aligns the matching edges of a given tiles, against
         that of a neighboring tile, provided the overlapping edges are given"""
-
+        count = 0
         while tstatic.edges[epos1] != tdyn.edges[epos2]:
                 tdyn.rotate(1)
+                count += 1
 
     tA = square.tiles[0]
     tB = square.tiles[1]
