@@ -55,9 +55,14 @@ def check(square):
 
     #TODO: UPDATE: In response to your questions, I have some questions of my own:
     # 1.) How many unique solutions can a puzzle have? is there only one unique solution?
+	That's a great question. I'm not sure how to prove how many exist without solving for all of them. Maybe 0, maybe n, haha.
     # 2.) Are we, at this stage, concerned with the level of efficiency with which the solution needs to be discovered?
+	Not. at. all. haha. Once we have a good solution I'll port it over to Go and I'll show you how we can speed up our solution by at least 10x.
     # 3.) Do you have a recommended algorithm, and/or know of any algorithms that might deal with this? I suppose this deals directly with my first question, since if there true exists only one unique solution, then we might be dealing with as many as 9! permutations for just the tile placements, not accounting for tile rotations.
+	I have an algorithm, but it's from my brain (it's not a published/known one that you can read about elsewhere). It's as simple as laying down the puzzle in some "zero" state and then rotating the tiles, one by one, and moving the tiles, one by one, until there's a solution, working our way through something like the  9!4! placements and rotations...
     # 4.) Dealing with your last point is easy, obviously, though the path forward needs to be discussed before progressing any further, imo
+	Let's do it. I'm down to chat this weekend.
+	
 
     def centerCheck(tcenter, tdyn, epos1, epos2=None):
         falseCenter = False
